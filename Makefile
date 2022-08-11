@@ -1,5 +1,5 @@
 SRC		= server.c
-SRC2	= client.c
+SRC2	= client.c aux.c
 OBJS	= ${SRC:.c=.o}
 OBJS2	= ${SRC2:.c=.o}
 CC		= gcc

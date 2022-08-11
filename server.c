@@ -6,7 +6,7 @@
 /*   By: dperez-m <dperez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:14:00 by dperez-m          #+#    #+#             */
-/*   Updated: 2022/08/09 18:10:58 by dperez-m         ###   ########.fr       */
+/*   Updated: 2022/08/11 18:33:19 by dperez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	test(int signal, siginfo_t *info, void *context)
 	(void)context;
 
 	if (signal == SIGUSR1)
-		ft_printf("SIGUSR1 recibido!\n");
+		ft_printf("1");
 	else if (signal == SIGUSR2)
-		ft_printf("SIGUSR2 recibido!\n");
+		ft_printf("0");
 }
 
 int	main()
