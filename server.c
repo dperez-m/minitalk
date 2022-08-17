@@ -6,21 +6,34 @@
 /*   By: dperez-m <dperez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:14:00 by dperez-m          #+#    #+#             */
-/*   Updated: 2022/08/11 18:33:19 by dperez-m         ###   ########.fr       */
+/*   Updated: 2022/08/17 14:23:25 by dperez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+int	g_x = 0;
 
 void	test(int signal, siginfo_t *info, void *context)
 {
 	(void)info;
 	(void)context;
+	static	int	letter;
 
+	if (signal == SIGUSR1 || signal == SIGUSR2)
+		{
+		g_x += 1;
+		letter <<= 1;
+		}
 	if (signal == SIGUSR1)
-		ft_printf("1");
-	else if (signal == SIGUSR2)
-		ft_printf("0");
+		letter += 1;
+
+	if (g_x == 8)
+	{
+		ft_printf("%c", (char)letter);
+		g_x = 0;
+	}
+	
+	
 }
 
 int	main()

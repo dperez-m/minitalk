@@ -6,7 +6,7 @@
 /*   By: dperez-m <dperez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:06:20 by dperez-m          #+#    #+#             */
-/*   Updated: 2022/08/11 18:04:42 by dperez-m         ###   ########.fr       */
+/*   Updated: 2022/08/17 16:55:47 by dperez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sendsignal(int pid, char letter)
 		else 
 			kill(pid, SIGUSR2);
 		mask >>= 1;
-		usleep(1);
+		usleep(40);
 	}
 }
 
