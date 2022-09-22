@@ -6,7 +6,7 @@
 /*   By: dperez-m <dperez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:06:20 by dperez-m          #+#    #+#             */
-/*   Updated: 2022/09/20 17:15:23 by dperez-m         ###   ########.fr       */
+/*   Updated: 2022/09/22 19:51:33 by dperez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,6 @@ void	sendsignal(int pid, char letter)
 	}
 }
 
-void	sendsize(int pid, char *arg)
-{
-	int	x;
-
-	x = 0;
-	while (arg[x] != '\0')
-		x++;
-	while (x > 1)
-	{
-		kill(pid, SIGUSR2);
-		x--;
-		usleep(80);
-	}
-	kill(pid, SIGUSR1);
-}
-
 int	main(int argc, char **argv)
 {
 	int	pid;
@@ -60,12 +44,21 @@ int	main(int argc, char **argv)
 		ft_printf("Error: Invalid PID");
 		return (0);
 	}
-	sendsize(pid, &argv[2][0]);
 	x = -1;
 	while (argv[2][++x] != '\0')
-		sendsignal(pid, argv[2][x]);
+	{
+		kill(pid, SIGUSR1);
+		usleep(80);
+	}
+	kill(pid, SIGUSR2);
 	x = -1;
-	while (++x < 8)
+	while (argv[2][++x] != '\0')
+	{
+		sendsignal(pid, argv[2][x]);
+		usleep(50);
+	}
+	x = 9;
+	while (--x > 0)
 		kill(pid, SIGUSR2);
 	return (0);
 }

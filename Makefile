@@ -3,7 +3,7 @@ SRC2	= client.c aux.c
 OBJS	= ${SRC:.c=.o}
 OBJS2	= ${SRC2:.c=.o}
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra -g3 #-fsanitize=address
+CFLAGS	= -Wall -Werror -Wextra #-g3 #-fsanitize=address
 AR		= ar rc
 NAME	= server
 NAME2	= client
