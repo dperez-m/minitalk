@@ -6,7 +6,7 @@
 /*   By: dperez-m <dperez-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:15:32 by dperez-m          #+#    #+#             */
-/*   Updated: 2022/08/11 18:17:10 by dperez-m         ###   ########.fr       */
+/*   Updated: 2022/09/22 22:10:38 by dperez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,9 @@ int	ft_atoi(const char *str)
 	int	i;
 	int	number;
 
-	i = 0;
 	sign = 1;
 	number = 0;
-	while (str[i] != '\0' && (str[i] == ' ' || (str[i] == '\n'
-				|| str[i] == '\t' || str[i] == '\v' || str[i] == '\f'
-				|| str[i] == '\r')))
-		i++;
+	i = ft_atoiaux((char *)str);
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
@@ -43,27 +39,14 @@ int	ft_atoi(const char *str)
 	return (number * sign);
 }
 
-/* void	chartobin(char letter)
+int	ft_atoiaux(char *str)
 {
-	int mask = 1 << 7;
+	int	i;
 
-	while (mask != 0) {
-		if (letter & mask)
-			printf("1");
-		else 
-			printf("0");
-		mask >>= 1;
-	}
-	printf("\n");
-
+	i = 0;
+	while (str[i] != '\0' && (str[i] == ' ' || (str[i] == '\n'
+				|| str[i] == '\t' || str[i] == '\v' || str[i] == '\f'
+				|| str[i] == '\r')))
+		i++;
+	return (i);
 }
-
-int	main(int argc, char **argv)
-{
-	for (int i = 0; argv[1][i]; i++)
-	{
-		chartobin(argv[1][i]);
-	}		
-
-	return (0);
-} */
